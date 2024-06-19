@@ -1,0 +1,6 @@
+1. This fodler contains two file of the same program.
+.ts is the original Typercript version.
+.js is the compiled version by Typescript compiler (tsc).
+
+2. Why Typerscript?
+More secure, more performance, more challenging.
