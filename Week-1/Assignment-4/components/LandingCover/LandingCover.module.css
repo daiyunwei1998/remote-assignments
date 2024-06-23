@@ -1,0 +1,95 @@
+
+.landing_cover {
+    display: block;
+    height: calc(100vh - 48px - 67.2px);
+    width: 100vw;
+    background-color: #EEEEEE;
+}
+
+.div_landing {
+    background-image: url("/img/io-promo-l4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: bottom center;
+    max-height: 100%;
+    margin-left: 50px;
+    height: calc(100% - 48px);
+}
+
+.landing_content {
+    width:80%;
+    margin: 0 auto;
+    text-align: center;
+    max-height: 100%;
+    padding: 24px;
+}
+
+.landing_h1 {
+    font-size: 48px; 
+   
+  }
+.landing_h2 {
+    display: none;
+}
+
+
+.landingCTA {
+height:40px;
+background-color: #1a73e8;
+color:white;
+border: transparent;
+padding: 10px 20px 10px 20px;
+border-radius:20px;
+font-size:18px;
+}
+.landingCTA:hover {
+cursor: pointer;
+background-color: #5f6368;
+transition: 3ms;
+}
+  
+
+@media screen and (min-width:600px) {
+    .landing_content {
+        display: flex;
+        flex-direction: column;
+    }
+    .landing_h1 {
+      font-size: 64px;
+    }
+ 
+  }
+  
+
+@media screen and (min-width:850px) {
+    .landing_h1 {
+      font-size: 72px;
+      margin-bottom: 10px;
+      margin-top: -14px;
+    }
+    .landing_h2 {
+        font-size:20px
+    }
+    .landing_content {
+        margin: 0;
+        text-align: left;
+        width: 50%;
+    }
+  }
+  @media screen and (min-width:1025px) {
+    .div_landing {
+        height: 100%;
+        background-position: right 40%;
+        background-size: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    
+    }
+    .landing_h2 {
+        display:block;
+    }
+   
+   
+  }

@@ -1,0 +1,43 @@
+.card_container {
+    display: flex;
+    flex-direction: column;
+    outline:1.5px solid #dadce0;
+    border-radius: 10px;
+}
+.div_card_with_button_content {
+    height:70%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+
+}
+.img {
+    display: block;
+    margin:16px auto 16px auto;
+}
+.h2 {
+    text-decoration: none;
+    color: black;
+    margin-top: -4px;
+    font-size: 24px;
+}
+.h2_with_link {
+    text-decoration: none;
+}
+.p {
+    flex:1;
+    font-size: 18px;
+}
+.button {
+    background-color:#1a73e8;
+    border-radius: 4px;
+    padding: 5px 20px 5px 20px;
+    color:white;
+    border: None;
+    height: 36px;
+    display: block;
+
+}
+.button:hover {
+cursor:pointer;
+}

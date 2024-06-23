@@ -1,0 +1,26 @@
+/* SearchBox.module.css */
+.language-container {
+    display: flex;
+    align-items: center;
+    width: 200px; /* TODO Adjust when clicked */
+    outline: 1px solid  #F1F3F4;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 90px;
+    max-height: 26px;
+    min-height: 26px;
+  }
+  
+  .earth-icon {
+    margin-right: 10px; /* Space between icon and input */
+    color: #3C4043;
+    width: 1rem;
+  }
+  
+  .language-selected {
+    flex: 0;
+    color: #3C4043;
+    outline: none;
+    font-size: 14px;
+  }
+  
