@@ -1,0 +1,13 @@
+# How to use JTest with TypeScript
+https://titangene.github.io/article/jest-typescript.html
+# How to run jtest
+Init a project folder using `npm init` 
+
+
+in package.json, set
+```
+"scripts": {
+    "test": "jest"
+  },
+```
+Then run `npm run test`
