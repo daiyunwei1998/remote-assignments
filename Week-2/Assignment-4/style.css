@@ -1,0 +1,119 @@
+/* ================================= 
+Base Layout Styles
+==================================== */
+
+body {
+    margin: 0;
+    color: #003844;
+}
+img {
+    width: 100%; 
+    height: auto; 
+    margin:auto;
+}
+
+/* ================================= 
+Base Layout Styles
+==================================== */
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #FFFAFF ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+    z-index: 2;
+}
+.nav_item {
+    color: #F5C647;
+    margin: auto;
+    flex: 1 0 20%; 
+    text-align: center;
+}
+.nav_item:first-child {
+    flex: 0 1 100%;
+    margin-bottom: 5px;
+}
+#welcome-message {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+#section-title {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.content_container {
+    max-width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+    margin-bottom: 1rem;
+    justify-content: center;
+    gap: 10px 10px;
+}
+.content_item {
+    max-width: 400px;
+    height: auto;
+    margin: 20px;
+
+
+}
+
+/* ================================= 
+Customize color and formats
+==================================== */
+em {
+    color:#F5C647;
+}
+.nav_item:hover {
+    color: #003844;
+}
+.button-cta {
+    display:block;
+    background-color: #003844;
+    color:#F5C647;
+    border-radius: 4px;
+    margin: auto;
+}
+footer {
+    color: grey;
+    margin-top: 20px;
+    text-align: center;
+}
+.fa-github {
+    color:#003844
+}
+
+/* ================================= 
+Media Queries
+==================================== */
+@media screen and (min-width:330px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #FFFAFF ;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .08);
+        z-index: 2;
+        flex: 1;
+    
+    }
+    .nav_item:first-child {
+        flex: unset;
+    }
+    .nav_item {
+        flex: unset;
+        color: #F5C647;
+        margin: 5px;
+    }
+    .nav_item:nth-child(2) {
+        margin-left: auto;
+    }
+}
+@media screen and (min-width:1200px) {
+    .content_container {
+        max-width:1200px;
+    }
+
+}
