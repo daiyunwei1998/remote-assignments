@@ -84,3 +84,16 @@ describe('Testing get()', () => {
     expect(tree.get(10)).toBe(-1);  // 10 is not in the tree, so rank should be -1
   });
 });
+
+
+describe('Testing iterable', () => {
+
+  test('Iterable protocol - Basic iteration', () => {
+    const tree = new IndexedBinarySearchTree();
+    tree.fromArray([5, 3, 7, 2, 4, 6, 8]); // Insert elements into the tree
+    
+    const result = [...tree]; // Spread the tree into an array
+    
+    expect(result).toEqual([2, 3, 4, 5, 6, 7, 8]); // Check if iteration produces correct order
+});
+});

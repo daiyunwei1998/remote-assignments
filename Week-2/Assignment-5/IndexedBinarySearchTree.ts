@@ -1,3 +1,6 @@
+/* disclaimer: iterable implementation is done 
+with the help of Chatgpt, my work is minimal
+*/
 class IndexedBinarySearchTree {
     private root: Node | null;
     constructor() {
@@ -93,6 +96,19 @@ class IndexedBinarySearchTree {
         } 
         node.N = this.sizeOf(node.left) + this.sizeOf(node.right) + 1;
         return node;
+    }
+
+     // Implementing iterable protocol
+    *[Symbol.iterator](): Generator<number> {
+        yield* this.inOrderTraversal(this.root);
+    }
+
+    private *inOrderTraversal(node: Node | null): Generator<number> {
+        if (node) {
+            yield* this.inOrderTraversal(node.left);
+            yield node.val;
+            yield* this.inOrderTraversal(node.right);
+        }
     }
 }
 
