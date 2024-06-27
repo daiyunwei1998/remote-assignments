@@ -1,0 +1,31 @@
+This assginment contains two tasks.
+
+# Binary Search
+> Given a sorted array, return the index of target number.
+
+
+Interesting fact: Why use `let mid = left + (right - left) / 2;` 
+
+https://dev.to/matheusgomes062/a-bug-was-found-in-java-after-almost-9-years-of-hiding-2d4k
+
+# Binary Search Tree
+## Why BST?
+You know what? task 1 is too easy. 
+- What if the array is not sorted?
+    
+     Like most real life data, nothing is organized, just like my room.
+
+- What if the data is streaming?
+
+    The data don't all come at once. We should figure out a data structure that stores everything, can be updated from time to time, that support easy query with a decent performance.
+
+Introducing **Indexed Binary Search Tree**. This is a data structure that specialize in comparison based query with a runtime of `theta(logN)`.
+## Task description
+
+> given a unsorted array, return a BST object. that support the following APIs.
+* get(): return the index of queried number
+* put(): put a number into the BST
+* size(): get the total size of that BST
+
+Let's make it more interesting. It should also be a iterable ! Happy coding :)
+
