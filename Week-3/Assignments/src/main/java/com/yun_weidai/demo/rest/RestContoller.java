@@ -10,6 +10,7 @@ public class RestContoller {
         return "This is AppWork School Back-End Week-3 Assignment by Yun-wei Dai.";
     }
 
+    @CrossOrigin
     @GetMapping("/data")
     public ResponseEntity<String> getAccumulatedSum(@RequestParam(value = "number", required = false) String numberString) {
         // if no parameter is specified "host:port/data"
@@ -30,7 +31,7 @@ public class RestContoller {
             return ResponseEntity.badRequest().body("Wrong parameter.");
         }
         // return 1+2+3+..+N
-        return ResponseEntity.ok(accumulatedSum(number).toString());
+        return ResponseEntity.ok().body(accumulatedSum(number).toString());
     }
 
     /**
