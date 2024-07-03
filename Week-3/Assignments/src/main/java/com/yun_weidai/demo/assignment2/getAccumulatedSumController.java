@@ -1,15 +1,13 @@
-package com.yun_weidai.demo.rest;
+package com.yun_weidai.demo.assignment2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import java.math.BigInteger;
 
 @RestController
-public class RestContoller {
-    @GetMapping("/")
-    public String hello() {
-        return "This is AppWork School Back-End Week-3 Assignment by Yun-wei Dai.";
-    }
-
+public class getAccumulatedSumController {
     @CrossOrigin
     @GetMapping("/data")
     public ResponseEntity<String> getAccumulatedSum(@RequestParam(value = "number", required = false) String numberString) {
@@ -31,19 +29,7 @@ public class RestContoller {
             return ResponseEntity.badRequest().body("Wrong parameter.");
         }
         // return 1+2+3+..+N
-        return ResponseEntity.ok().body(accumulatedSum(number).toString());
-    }
-
-    /**
-     * @param num a BigInteger N
-     * @return accumulated sum of 1 + 2 + 3 + ... + N.
-     */
-    private BigInteger accumulatedSum(BigInteger num) {
-        // accept and return bigInteger to avoid numerical overflow
-        num.add(BigInteger.ONE).multiply(num).divide(BigInteger.TWO);
-
-        // Calculate sum from 1 to num
-        return num.add(BigInteger.ONE).multiply(num).divide(BigInteger.TWO);
+        return ResponseEntity.ok().body(accumulatedSum.calc(number).toString());
     }
 }
  
