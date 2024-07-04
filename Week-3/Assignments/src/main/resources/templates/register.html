@@ -7,9 +7,9 @@
 <body>
 <form th:action="@{trackName?name=}" method="get" class="form-name-register">
     <div>
-        <label for="input-name">Enter your name (English characters only): </label>
+        <label for="input-name">Enter your name: </label>
         <!--    A string composed of only English alphabet for cookie format requirement-->
-        <input pattern="[A-Za-z]+" type="text" th:name="name" id="input-name" required/>
+        <input type="text" th:name="name" id="input-name" required/>
     </div>
     <div>
         <input type="submit" value="Remember me!"/>
