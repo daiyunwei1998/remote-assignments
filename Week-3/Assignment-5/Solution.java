@@ -24,10 +24,10 @@ class Solution {
 
         // only loop through this array once. O(n)
         for (int i = 0; i < nums.length; i++) {
-            // put int into hashmap
-            hashMap.put(nums[i], i);
             // check if complement is in HashMap (search hit)
             complement = target - nums[i];
+            // put int into hashmap
+            hashMap.put(nums[i], i);
             if (hashMap.containsKey(complement) && hashMap.get(complement) != i) {
                 return new int[]{hashMap.get(complement), i};
             }
