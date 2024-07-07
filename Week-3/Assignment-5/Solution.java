@@ -26,11 +26,11 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             // check if complement is in HashMap (search hit)
             complement = target - nums[i];
-            // put int into hashmap
-            hashMap.put(nums[i], i);
             if (hashMap.containsKey(complement) && hashMap.get(complement) != i) {
                 return new int[]{hashMap.get(complement), i};
             }
+            // put int into hashmap
+            hashMap.put(nums[i], i);
         }
         return (null);  // search miss
     }
