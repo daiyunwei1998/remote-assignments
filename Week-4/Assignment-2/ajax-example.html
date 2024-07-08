@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An ajax data fecthing example</title>
+    <script>
+        function ajax(src, callback) {
+        // your code here
+        const SAMPLE_URL =
+            "https://remote-assignment.s3.ap-northeast-1.amazonaws.com/products";
+        let request = new XMLHttpRequest();
+        request.open("get", SAMPLE_URL);
+        request.send();
+        request.onload = function() {
+        if (request.status == 200) {
+            callback(request.responseText);
+        } else {
+            console.error(`HTTP error: ${request.status}`);
+        }
+        } 
+    };
+        function render(data) {
+        // your code here
+        // document.createElement() and appendChild() methods are preferred.
+            const parsed = JSON.parse(data);
+            parsed.map((product) => {
+
+                document.querySelector('.list-products').innerHTML += 
+                    `<li> ${product.name}
+                        <ul>
+                            <li>
+                                price: ${product.price}
+                            </li>
+                            <li>
+                                description: ${product.description}
+                            </li>
+                        </ul>
+                        </li>
+                        `
+        })
+        
+            
+        }
+        ajax(
+        "https://remote-assignment.s3.ap-northeast-1.amazonaws.com/products",
+        function (response) {
+            render(response);
+        }
+        ); // you should get product information in JSON format and render data in the page
+    </script>
+</head>
+<body>
+    <ul class = 'list-products'>
+    
+    </ul>
+</body>
+</html>
