@@ -5,6 +5,9 @@ import com.yun_weidai.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,23 +19,21 @@ public class UserServiceImpl implements UserService {
         if (!hasUser(user)) {
             // Case 1: Email not found, insert new user
             userDAOImpl.addUser(user);
-            return SignUpOutcome.SUCCESS;
+            return SignUpOutcome.SIGNUP_SUCCESS;
         } else {
             // Case 2: Email found, check password
-            return SignUpOutcome.DUPLICATE;
+            return SignUpOutcome.SIGNUP_FAILTURE_DUPLICATE;
         }
     }
 
     @Override
     public SignInOutcome signIn(User user) {
         if (!hasUser(user)) {
-            System.out.println("no user");
             return SignInOutcome.SIGNIN_FAILURE_USER_NOT_FOUND;
         } else if (!validatePassword(user)) {
-            System.out.println("wrong pwd");
             return SignInOutcome.SIGNIN_FAILURE_WRONG_PASSWORD;
         } else {
-            return SignInOutcome.SUCCESS;
+            return SignInOutcome.SIGNIN_SUCCESS;
         }
     }
 
@@ -50,6 +51,15 @@ public class UserServiceImpl implements UserService {
         }
         // return true if password match
         return userInDB.getPassword().equals(user.getPassword());
+    }
+
+    @Override
+    public boolean isValidateEmailFormat(User user) {
+        String EMAIL_REGEX =
+                "^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
+        Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = emailPattern.matcher(user.getEmail());
+        return matcher.matches();
     }
 
 

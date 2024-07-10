@@ -18,16 +18,9 @@ public class SignInController {
     @PostMapping("/signIn")
     public String LogIn(Model model, User user) {
         SignInOutcome signInOutcome = userServiceImpl.signIn(user);
-        switch (signInOutcome) {
-            case SUCCESS:
-                model.addAttribute("statusCode","SIGNIN_SUCCESS");
+        model.addAttribute("statusCode",signInOutcome.name());
+        if (signInOutcome.equals(SignInOutcome.SIGNIN_SUCCESS)) {
                 return "member";
-            case SIGNIN_FAILURE_WRONG_PASSWORD:
-                model.addAttribute("statusCode","SIGNIN_FAILURE_WRONG_PASSWORD");
-                return "index";
-            case SIGNIN_FAILURE_USER_NOT_FOUND:
-                model.addAttribute("statusCode","SIGNIN_FAILURE_USER_NOT_FOUND");
-                return "index";
         }
         return "index";
     }

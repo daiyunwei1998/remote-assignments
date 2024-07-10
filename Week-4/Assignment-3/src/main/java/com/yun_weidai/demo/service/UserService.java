@@ -7,4 +7,5 @@ public interface UserService {
     abstract public SignInOutcome signIn(User user);
     abstract public boolean hasUser(User user);
     abstract public boolean validatePassword(User user);
+    abstract public boolean isValidateEmailFormat(User user);
 }

@@ -17,13 +17,9 @@ public class SignUpController {
     @PostMapping("/signUp")
     public String SignUp(User user, Model model) {
         SignUpOutcome signUpOutcome = userServiceImpl.signUp(user);
-        switch (signUpOutcome) {
-            case SUCCESS:
-                model.addAttribute("statusCode","SIGNUP_SUCCESS");
-                return "member";
-            case DUPLICATE:
-                model.addAttribute("statusCode","SIGNUP_DUPLICATE");
-                return "index";
+        model.addAttribute("statusCode",signUpOutcome.name());
+        if (signUpOutcome.equals(signUpOutcome.SIGNUP_SUCCESS)) {
+            return "member";
         }
         return "index";
     }

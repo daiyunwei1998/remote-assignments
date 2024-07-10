@@ -1,6 +1,7 @@
 package com.yun_weidai.demo.service;
 
 public enum SignUpOutcome {
-    SUCCESS,
-    DUPLICATE
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILTURE_DUPLICATE,
+    WRONG_EMAIL_FORMAT
 }
