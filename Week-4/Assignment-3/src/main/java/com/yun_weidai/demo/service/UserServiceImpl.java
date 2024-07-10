@@ -15,7 +15,9 @@ public class UserServiceImpl implements UserService {
     private UserDAOImpl userDAOImpl;
     @Override
     public SignUpOutcome signUp(User user) {
-
+        if (!isValidateEmailFormat(user)) {
+            return SignUpOutcome.WRONG_EMAIL_FORMAT;
+        }
         if (!hasUser(user)) {
             // Case 1: Email not found, insert new user
             userDAOImpl.addUser(user);
@@ -28,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public SignInOutcome signIn(User user) {
+        if (!isValidateEmailFormat(user)) {
+            return SignInOutcome.WRONG_EMAIL_FORMAT;
+        }
         if (!hasUser(user)) {
             return SignInOutcome.SIGNIN_FAILURE_USER_NOT_FOUND;
         } else if (!validatePassword(user)) {
