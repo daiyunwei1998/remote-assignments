@@ -3,6 +3,7 @@ package com.yun_weidai.demo.service;
 import com.yun_weidai.demo.dao.UserDAOImpl;
 import com.yun_weidai.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.regex.Matcher;
@@ -50,12 +51,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean validatePassword(User user) {
         User userInDB = userDAOImpl.getUserByEmail(user);
+        BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
         // if user not found
         if (!hasUser(user)) {
             return false;
         }
         // return true if password match
-        return userInDB.getPassword().equals(user.getPassword());
+        return bcryptPasswordEncoder.matches(user.getPassword(),userInDB.getPassword());
     }
 
     @Override

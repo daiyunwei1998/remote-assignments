@@ -2,15 +2,22 @@ package com.yun_weidai.demo.dao;
 
 import com.yun_weidai.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.sql.*;
 
 @Component
 public class UserDAOImpl implements UserDAO<User> {
-    private final String URL = "jdbc:mysql://localhost:3306/assignment";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "root123";
+    @Value("${database.url}")
+    private String url;
+
+    @Value("${database.username}")
+    private String username;
+
+    @Value("${database.password}")
+    private String password;
     private final UserRowMapper userRowMapper;
 
     @Autowired
@@ -24,11 +31,12 @@ public class UserDAOImpl implements UserDAO<User> {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            try (Connection connection = DriverManager.getConnection(url, username, password);
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (email, password) VALUES (?, ?)")) {
                 // Insert query
+                BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
                 statement.setString(1, user.getEmail());
-                statement.setString(2, user.getPassword());
+                statement.setString(2, bcryptPasswordEncoder.encode(user.getPassword()));
                 statement.executeUpdate();
 
             } catch (SQLException e) {
@@ -45,7 +53,7 @@ public class UserDAOImpl implements UserDAO<User> {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            try (Connection connection = DriverManager.getConnection(url, username, password);
                  PreparedStatement statement = connection
                          .prepareStatement("SELECT * FROM user WHERE email = ?")
             ) {
