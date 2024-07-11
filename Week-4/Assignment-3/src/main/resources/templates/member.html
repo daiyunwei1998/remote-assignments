@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+welcome, <span th:text="${user}"></span>
+<script th:if="${statusCode == 'SIGNUP_SUCCESS'}">
+    alert('You\'ve successfully signed up! Redirect you to member page');
+</script>
+<script th:if="${statusCode == 'SIGNIN_SUCCESS'}">
+    alert('Welcome back!');
+</script>
+</body>
+</html>

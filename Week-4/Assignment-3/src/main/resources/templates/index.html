@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Week4 Assignment 3</title>
+    <style>
+        body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form {
+  display: table;
+  border-spacing: 5px;
+}
+label {
+  display: table-cell;
+}
+input {
+  display: table-cell;
+}
+.div-buttons{
+    margin-top:10px;
+}
+
+    </style>
+</head>
+<body>
+    <form  th:object="${user}" method="post">
+      
+        <div class="container">
+          <div class = "div-email">
+            <label for="email"><b>Email</b></label>
+            <input th:field="*{email}" id = "email" type="email" placeholder="Enter email address" name="uname" required>
+          </div>
+
+          <div class = "div-pwd">
+            <label for="pwd"><b>Password</b></label>
+            <input th:field="*{password}" id = "pwd" type="password" placeholder="Enter Password" name="psw" required>
+          </div>
+
+          <div class = "div-buttons">
+              <button type="submit" formaction="/signUp" class = "button-sign-up">Sign-up</button>
+              <button type="submit" formaction="/signIn" class = "button-sign-in">Sign-in</button>
+          </div>
+        </div>
+    
+      </form>
+    <script th:if="${statusCode == 'WRONG_EMAIL_FORMAT'}">
+        alert('Wrong email format');
+    </script>
+    <script th:if="${statusCode == 'SIGNIN_FAILURE_WRONG_PASSWORD'}">
+        alert('Wrong password, please try again but not too many times');
+    </script>
+    <script th:if="${statusCode == 'SIGNIN_FAILURE_USER_NOT_FOUND'}">
+        alert('You haven\'t signed up before.');
+    </script>
+    <script th:if="${statusCode == 'SIGNUP_FAILTURE_DUPLICATE'}">
+        alert('User already registered');
+    </script>
+</body>
+</html>
